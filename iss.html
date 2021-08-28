@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>ISS Next Pass</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no"
+    />
+    <meta name="robots" content="noimageindex" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"
+      integrity="sha512-NWNl2ZLgVBoi6lTcMsHgCQyrZVFnSmcaa3zRv0L3aoGXshwoxkGs3esa9zwQHsChGRL4aLDnJjJJeP6MjPX46Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "https://www.kaowichita.com",
+        "logo": "https://www.kaowichita.com/static/kao.png"
+      }
+    </script>
+    <link rel="stylesheet" href="static/custom.css" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="header">
+        <a href="/">
+          <img
+            src="static/kao.png"
+            id="logo"
+            class="align-center d-none d-lg-inline-block"
+            alt="KAO Logo"
+          />
+        </a>
+        <h1 class="d-inline-block align-middle">
+          Kansas Astronomical Observers
+        </h1>
+      </div>
+      <div id="main" class="row">
+        <div class="col-lg-9">
+          <div id="content">
+            <h2 class="post-title">ISS Next Pass</h2>
+            <p>The next pass of the ISS in your sky. A work in progress.</p>
+            <script
+              src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+              integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ="
+              crossorigin="anonymous"
+            ></script>
+            <script
+              src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.23/moment-timezone-with-data-2012-2022.min.js"
+              integrity="sha256-IxkOFTlGnMi1+sywOLJgzNosxiZyxw76GQClGo49G+U="
+              crossorigin="anonymous"
+            ></script>
+            <!-- <script src="/static/js/bundle.js"></script> -->
+            <table
+              class="
+                table table-sm table-striped table-dark table-borderless
+                text-white
+              "
+            >
+              <tbody>
+                <tr>
+                  <td class="label">Begins</td>
+                  <td class="value">
+                    <span id="ISSStartTime">Loading...</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label">Start Position<br />(Az,Elev)</td>
+                  <td class="value">
+                    <span id="ISSStartPos">Loading...</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label">Maximum</td>
+                  <td class="value">
+                    <span id="ISSMaxTime">Loading...</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label">Maximum Position<br />(Az,Elev)</td>
+                  <td class="value"><span id="ISSMaxPos">Loading...</span></td>
+                </tr>
+                <tr>
+                  <td class="label">Ends</td>
+                  <td class="value">
+                    <span id="ISSEndTime">Loading...</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label">End Position<br />(Az,Elev)</td>
+                  <td class="value"><span id="ISSEndPos">Loading...</span></td>
+                </tr>
+                <tr>
+                  <td class="label">Magnitude</td>
+                  <td class="value"><span id="ISSMag">Loading...</span></td>
+                </tr>
+                <tr>
+                  <td class="label">Lat</td>
+                  <td>
+                    <input
+                      type="text"
+                      id="lat"
+                      style="border: 1px solid red"
+                      value="37.62218579135644"
+                      onChange="UpdateISS();"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label">Lon</td>
+                  <td>
+                    <input
+                      type="text"
+                      id="lon"
+                      style="border: 1px solid red"
+                      value="-97.62695789337158"
+                      onChange="UpdateISS();"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label">Elev (m)</td>
+                  <td>
+                    <input
+                      type="text"
+                      id="elev"
+                      style="border: 1px solid red"
+                      value="421.9319458007812"
+                      onChange="UpdateISS();"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label">Timezone</td>
+                  <td>
+                    <input
+                      type="text"
+                      id="tz"
+                      style="border: 1px solid red"
+                      value=""
+                      onChange="UpdateISS()"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <script>
+              var tz = document.getElementById('tz');
+              tz.value = moment.tz.guess();
+              UpdateISS();
+              function UpdateISS() {
+                var lat = parseFloat(document.getElementById('lat').value);
+                var lon = parseFloat(document.getElementById('lon').value);
+                var elev = parseFloat(document.getElementById('elev').value);
+                var ISSStartTime = document.getElementById('ISSStartTime');
+                var ISSStartPos = document.getElementById('ISSStartPos');
+                var ISSMaxTime = document.getElementById('ISSMaxTime');
+                var ISSMaxPos = document.getElementById('ISSMaxPos');
+                var ISSEndTime = document.getElementById('ISSEndTime');
+                var ISSEndPos = document.getElementById('ISSEndPos');
+                var ISSMag = document.getElementById('ISSMag');
+                var zone = document.getElementById('tz').value || 'UTC';
+                var timeFormat = 'M/D/YYYY HH:mm:ss Z z';
+                /*
+                myLib.getNextISSVisualPass(lat, lon, elev).then(pass => {
+                  if (pass) {
+                    var starttime = moment(pass.startUTC * 1000).utc();
+                    var endtime = moment(pass.endUTC * 1000).utc();
+                    var startpos = pass.startAz + '°, ' + pass.startEl + '°';
+                    var endpos = pass.endAz + '°, ' + pass.endEl + '°';
+                    var mag = pass.mag;
+                    var maxtime = moment(pass.maxUTC * 1000).utc();
+                    var maxpos = pass.maxAz + '°, ' + pass.maxEl + '°';
+                    var duration = pass.duration;
+                    ISSStartTime.innerHTML = starttime
+                      .tz(zone)
+                      .format(timeFormat);
+                    ISSMaxTime.innerHTML = maxtime.tz(zone).format(timeFormat);
+                    ISSEndTime.innerHTML = endtime.tz(zone).format(timeFormat);
+                    ISSStartPos.innerHTML = startpos;
+                    ISSMaxPos.innerHTML = maxpos;
+                    ISSEndPos.innerHTML = endpos;
+                    ISSMag.innerHTML = mag;
+                  } else {
+                    console.log('No passes in next 10 days.');
+                    ISSStartTime.innerHTML = 'No passes in next 10 days.';
+                    ISSMaxTime.innerHTML = '';
+                    ISSEndTime.innerHTML = '';
+                    ISSStartPos.innerHTML = '';
+                    ISSMaxPos.innerHTML = '';
+                    ISSEndPos.innerHTML = '';
+                    ISSMag.innerHTML = '';
+                  }
+                });
+                */
+              }
+              $('.label').css('font-weight', 'bold');
+              $('.label').css('text-align', 'right');
+            </script>
+
+            <p>
+              ISS Information courtesy of
+              <a href="https://www.n2yo.com/">N2YO.com</a>.
+            </p>
+
+            <div
+              style="
+                position: relative;
+                overflow: hidden;
+                padding-bottom: 56.25%;
+              "
+            >
+              <iframe
+                src="https://isstracker.spaceflight.esa.int/"
+                width="100%"
+                height="100%"
+                style="
+                  border: 0 none transparent;
+                  top: 0;
+                  left: 0;
+                  position: absolute;
+                  max-width: 625px;
+                  max-height: 313px;
+                "
+                id="iss-pos"
+                scrolling="no"
+                title="ESU ISS tracking map"
+                >ESU ISS tracking map</iframe
+              >
+            </div>
+
+            <p>Live view from the ISS <a href="view/">here</a>!</p>
+          </div>
+        </div>
+        <div class="col-lg-3 order-lg-first">
+          <nav id="nav" class="nav flex-column bg-dark nav-pills">
+            <a class="nav-link" href="index.html#">KAO</a>
+            <a class="nav-link" href="about-us.html">About Us</a>
+            <a class="nav-link" href="calendar.html">Calendar</a>
+            <a class="nav-link" href="links.html">Links</a>
+            <a class="nav-link" href="galleries.html">Photo Gallery</a>
+            <a class="nav-link" href="newsletter.html">Newsletters</a>
+            <a class="nav-link" href="bylaws.html">Bylaws</a>
+            <a class="nav-link" href>Astronomy Tools &amp; Info</a>
+            <nav class="nav flex-column bg-dark nav-pills ml-3">
+              <a class="nav-link" href="clearsky.html"
+                >Clear Sky Chart (LAPO)</a
+              >
+              <a class="nav-link" href="clock.html">Astronomical Clocks</a>
+              <a class="nav-link active" href="#">ISS Next Pass</a>
+              <a class="nav-link" href="iss-view.html">ISS Live Stream</a>
+            </nav>
+          </nav>
+        </div>
+      </div>
+      <div id="footer">&copy; 2021 Kansas Astronomical Observers</div>
+    </div>
+    <script>
+      $(window).scroll(function () {
+        var $size = $(this).scrollTop();
+        $ls = Math.min(Math.max(200 - $size, 60), 200);
+        $('#header #logo').css('height', $ls);
+        $('#header #logo').css('width', $ls);
+      });
+    </script>
+  </body>
+</html>

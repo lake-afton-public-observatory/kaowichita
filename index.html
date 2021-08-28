@@ -23,7 +23,7 @@
         "@context": "http://schema.org",
         "@type": "Organization",
         "url": "https://www.kaowichita.com",
-        "logo": "https://www.kaowichita.com/images/kao.png"
+        "logo": "https://www.kaowichita.com/static/kao.png"
       }
     </script>
     <link rel="stylesheet" href="static/custom.css" type="text/css" />
@@ -33,7 +33,7 @@
       <div id="header">
         <a href="/">
           <img
-            src="images/kao.png"
+            src="static/kao.png"
             id="logo"
             class="align-center d-none d-lg-inline-block"
             alt="KAO Logo"
@@ -206,7 +206,15 @@
           </nav>
         </div>
       </div>
-      <div id="footer">&copy; 2021 Kansas Astronomical Observers</div>
+      7
     </div>
+    <script>
+      $(window).scroll(function () {
+        var $size = $(this).scrollTop();
+        $ls = Math.min(Math.max(200 - $size, 60), 200);
+        $('#header #logo').css('height', $ls);
+        $('#header #logo').css('width', $ls);
+      });
+    </script>
   </body>
 </html>

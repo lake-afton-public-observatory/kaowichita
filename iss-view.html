@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>ISS Live Stream</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no"
+    />
+    <meta name="robots" content="noimageindex" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"
+      integrity="sha512-NWNl2ZLgVBoi6lTcMsHgCQyrZVFnSmcaa3zRv0L3aoGXshwoxkGs3esa9zwQHsChGRL4aLDnJjJJeP6MjPX46Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "https://www.kaowichita.com",
+        "logo": "https://www.kaowichita.com/static/kao.png"
+      }
+    </script>
+    <link rel="stylesheet" href="static/custom.css" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="header">
+        <a href="/">
+          <img
+            src="static/kao.png"
+            id="logo"
+            class="align-center d-none d-lg-inline-block"
+            alt="KAO Logo"
+          />
+        </a>
+        <h1 class="d-inline-block align-middle">
+          Kansas Astronomical Observers
+        </h1>
+      </div>
+      <div id="main" class="row">
+        <div class="col-lg-9">
+          <div id="content">
+            <div
+              style="
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 56.25%;
+              "
+            >
+              <iframe
+                width="100%"
+                height="100%"
+                style="top: 0; left: 0; position: absolute"
+                src="https://www.ustream.tv/embed/17074538?html5ui&amp;v=3&amp;wmode=direct&amp;autoplay=true"
+                scrolling="no"
+                allowfullscreen=""
+                webkitallowfullscreen=""
+                frameborder="0"
+                style="border: 0 none transparent"
+              ></iframe>
+            </div>
+
+            <div
+              style="
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 56.25%;
+              "
+            >
+              <iframe
+                width="100%"
+                height="100%"
+                style="top: 0; left: 0; position: absolute"
+                src="https://www.ustream.tv/embed/9408562?html5ui&amp;v=3&amp;wmode=direct&amp;autoplay=true"
+                allowfullscreen=""
+                webkitallowfullscreen=""
+                scrolling="no"
+                frameborder="0"
+                style="border: 0px none transparent"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 order-lg-first">
+          <nav id="nav" class="nav flex-column bg-dark nav-pills">
+            <a class="nav-link" href="index.html#">KAO</a>
+            <a class="nav-link" href="about-us.html">About Us</a>
+            <a class="nav-link" href="calendar.html">Calendar</a>
+            <a class="nav-link" href="links.html">Links</a>
+            <a class="nav-link" href="galleries.html">Photo Gallery</a>
+            <a class="nav-link" href="newsletter.html">Newsletters</a>
+            <a class="nav-link" href="bylaws.html">Bylaws</a>
+            <a class="nav-link" href>Astronomy Tools &amp; Info</a>
+            <nav class="nav flex-column bg-dark nav-pills ml-3">
+              <a class="nav-link" href="clearsky.html"
+                >Clear Sky Chart (LAPO)</a
+              >
+              <a class="nav-link" href="clock.html">Astronomical Clocks</a>
+              <a class="nav-link" href="iss.html">ISS Next Pass</a>
+              <a class="nav-link active" href="#">ISS Live Stream</a>
+            </nav>
+          </nav>
+        </div>
+      </div>
+      <div id="footer">&copy; 2021 Kansas Astronomical Observers</div>
+    </div>
+    <script>
+      $(window).scroll(function () {
+        var $size = $(this).scrollTop();
+        $ls = Math.min(Math.max(200 - $size, 60), 200);
+        $('#header #logo').css('height', $ls);
+        $('#header #logo').css('width', $ls);
+      });
+    </script>
+  </body>
+</html>
