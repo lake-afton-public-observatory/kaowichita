@@ -58,7 +58,7 @@
               integrity="sha256-IxkOFTlGnMi1+sywOLJgzNosxiZyxw76GQClGo49G+U="
               crossorigin="anonymous"
             ></script>
-            <!-- <script src="/static/js/bundle.js"></script> -->
+            <script src="static/bundle.js"></script>
             <table
               class="
                 table table-sm table-striped table-dark table-borderless
@@ -169,7 +169,7 @@
                 var ISSMag = document.getElementById('ISSMag');
                 var zone = document.getElementById('tz').value || 'UTC';
                 var timeFormat = 'M/D/YYYY HH:mm:ss Z z';
-                /*
+                
                 myLib.getNextISSVisualPass(lat, lon, elev).then(pass => {
                   if (pass) {
                     var starttime = moment(pass.startUTC * 1000).utc();
@@ -200,7 +200,7 @@
                     ISSMag.innerHTML = '';
                   }
                 });
-                */
+                
               }
               $('.label').css('font-weight', 'bold');
               $('.label').css('text-align', 'right');
