@@ -58,7 +58,7 @@
               integrity="sha256-IxkOFTlGnMi1+sywOLJgzNosxiZyxw76GQClGo49G+U="
               crossorigin="anonymous"
             ></script>
-            <script src="/static/bundle.js"></script>
+            <script src="static/bundle.js"></script>
             <table class="table table-striped table-hover table-sm table-dark">
               <tbody>
                 <tr>
@@ -129,7 +129,7 @@
                 var JD = document.getElementById('JD');
                 var lon = parseFloat(document.getElementById('lon').value);
                 UTC.innerHTML = time.format('M/D, HH:mm:ss.S');
-                /*
+                
                 var mean_sidereal = myLib.getSidereal(time, true);
                 var apparent_sidereal = myLib.getSidereal(time);
                 GMST.innerHTML = myLib.formatHourAngle(mean_sidereal);
@@ -142,7 +142,7 @@
                 );
                 var zone = document.getElementById('tz').value || 'UTC';
                 LT.innerHTML = time.tz(zone).format('M/D, HH:mm:ss.S');
-                */
+                
               }
               $('.label').css('font-weight', 'bold');
               $('.label').css('text-align', 'right');
